@@ -21,7 +21,7 @@ bridge.on('identify', function(paired, callback) {
 });
 
 // Load up all accessories in the /accessories folder
-var dir = path.join(__dirname, "accessories");
+var dir = path.join(__dirname, "accessories_enabled");
 var accessories = accessoryLoader.loadDirectory(dir);
 
 // Add them all to the bridge
@@ -31,8 +31,8 @@ accessories.forEach(function(accessory) {
 
 // Publish the Bridge on the local network.
 bridge.publish({
-  username: "CC:22:3D:E3:CE:F6",
+  username: process.env["USERNAME"] || "CC:22:3D:E3:CE:F6",
   port: 51826,
-  pincode: "031-45-154",
+  pincode: process.env["PINCODE"] || "031-45-154",
   category: Accessory.Categories.BRIDGE
 });
