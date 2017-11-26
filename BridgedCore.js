@@ -26,13 +26,14 @@ var accessories = accessoryLoader.loadDirectory(dir);
 
 // Add them all to the bridge
 accessories.forEach(function(accessory) {
+  console.log("Added accessory: %s", accessory.displayName);
   bridge.addBridgedAccessory(accessory);
 });
 
 // Publish the Bridge on the local network.
 bridge.publish({
-  username: process.env["USERNAME"] || "CC:22:3D:E3:CE:F6",
+  username: process.env["USERNAME"] || "CC:22:3D:E3:CE:F1",
   port: 51826,
-  pincode: process.env["PINCODE"] || "031-45-154",
+  pincode: process.env["PINCODE"] || "000-00-000",
   category: Accessory.Categories.BRIDGE
 });
